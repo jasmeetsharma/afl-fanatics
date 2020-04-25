@@ -1,0 +1,37 @@
+<section class="next-games">
+    <button class="btn btn-success" (click)="getNextGames()">Next Games</button>
+    <button class="btn btn-success" (click)="getPreviousGames()">Last Games</button>
+    <ul class="list-group" *ngIf="nextGamesFlag">
+        <li class="list-item conatiner" *ngFor="let g of nextGames | slice:0:5; let i=index">
+            <ul class="list-group-horizontal row justify-content-center rounded-lg">
+                <a class="list-item ml-auto">
+                    <app-team-card [inputTeam]="getTeam(g.hteamid)"></app-team-card>
+                </a>
+                <li class="list-item align-self-center mr-auto ml-auto">
+                    <div>{{g.date}}</div>
+                </li>
+                <a class="list-item mr-auto">
+                    <app-team-card [inputTeam]="getTeam(g.ateamid)"></app-team-card>
+                </a>
+            </ul> 
+        </li>
+    </ul>
+    <ul class="list-group" *ngIf="lastGamesFlag">
+        <li class="list-item conatiner" *ngFor="let g of previousGames">
+            <ul class="list-group-horizontal row justify-content-center rounded-lg">
+                <a class="list-item ml-auto">
+                    <app-team-card [inputTeam]="getTeam(g.hteamid)"></app-team-card>
+                </a>
+                <li class="list-item align-self-center mr-auto ml-auto">
+                    <div>Score: {{g.hscore}} - {{g.ascore}}</div>
+                    <div>Goals: {{g.hgoals}} - {{g.agoals}}</div>
+                    <div>Winner: {{g.winner}}</div>
+                    <div>{{g.date}}</div>
+                </li>
+                <a class="list-item mr-auto">
+                    <app-team-card [inputTeam]="getTeam(g.ateamid)"></app-team-card>
+                </a>
+            </ul> 
+        </li>
+    </ul>
+</section>
