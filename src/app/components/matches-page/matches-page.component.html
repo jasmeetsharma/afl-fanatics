@@ -1,0 +1,38 @@
+<div class="hero-image">
+    <div class="hero-text">
+      <h1 style="font-size:64px">Matches</h1>
+    </div>
+    <div>
+        <select (change)="updateSelectedTeam($event.target.value,rivalTeamId)">
+            <option value="0">Select Fav Team</option>
+            <option *ngFor="let team of teams | async" value={{team.id}}>
+                {{team.name}}
+            </option>
+        </select>
+    </div>
+    <div>
+        <select (change)="updateSelectedTeam(favTeamId,$event.target.value)">
+            <option value="0">Select Rival Team</option>
+            <option *ngFor="let team of teams | async" value={{team.id}}>
+                {{team.name}}
+            </option>
+        </select>
+    </div>
+    <div>
+        <select (change)="updateDisplaySelection($event.target.value)">
+            <option value="0">All Games</option>
+            <option value="1">Upcoming Games</option>
+            <option value="2">Previous Games</option>
+        </select>
+    </div>
+</div>
+<div class="container" style="margin:50px auto">
+    <div *ngIf="prevGames">
+        <h2 class="display-3">Results</h2>
+        <app-game-panel [inputPanelType]="2" [numOfGames]="" [games]="previousGames"></app-game-panel>
+    </div>
+    <div *ngIf="nextG">
+        <h2 class="display-3">Upcoming Matches</h2>
+        <app-game-panel [inputPanelType]="1" [numOfGames]="" [games]="nextGames"></app-game-panel>
+    </div>
+  </div>

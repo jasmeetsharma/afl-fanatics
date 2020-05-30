@@ -1,0 +1,22 @@
+<div class="hero-image">
+    <div class="hero-text">
+      <h1 style="font-size:64px">{{team.name}}</h1>
+      <div class="team-logo-banner">
+        <img src="{{'https://squiggle.com.au/'+team.logo}}" class="banner-logo" title="team logo">
+      </div>
+    </div>
+</div>
+<div class="container" style="margin:50px auto">
+  <a routerLink="/matches" [state]="{data:team}">
+    <h2 class="display-3">Results</h2>
+  </a>
+  <app-game-panel [inputPanelType]="1" [numOfGames]="1" [games]="nextGames"></app-game-panel>
+  <a routerLink="/matches" [state]="{data:team}">
+    <h2 class="display-3">Upcoming Matches</h2>
+  </a>
+  <app-game-panel [inputPanelType]="1" [numOfGames]="1" [games]="nextGames"></app-game-panel>
+  <a routerLink="/tips" [state]="{data:team}">
+    <h2 class="display-3">Prediction</h2>
+  </a>
+  <app-game-panel [inputPanelType]="1" [numOfGames]="1" [games]="nextGames"></app-game-panel>
+</div>
