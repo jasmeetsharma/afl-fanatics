@@ -1,14 +1,28 @@
 <header>
-    <nav class="navbar navbar-light fixed-top" style="border-radius: 3px;background-color: rgb(1, 43, 93);">
-        <a class="navbar-brand" routerLink="/">
-            <img src="\assets\logo.png" width="85" height="70" class="d-inline-block align-top"
-                alt="">
-            AFL Fanatics
-        </a>
-        <ul class="navbar-nav list-group-horizontal ml-md-auto list-group">
-            <a routerLink="/" class="nav-item list-group-item">Home</a>
-            <a class="nav-item list-group-item">Contact</a>
-            <a class="nav-item list-group-item">About us</a>
-        </ul>
-    </nav>
+    <nav class="navbar navbar-expand-md navbar-dark sticky-top">
+		<div class="container">
+			<a href="#" class="navbar-brand">
+				<img src="assets/logo.png" alt="AFL Fanatics">
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a routerLink="/matches" class="nav-link">MATCHES</a>
+					</li>
+					<li class="nav-item">
+						<a routerLink="/teams" class="nav-link">TEAMS</a>
+					</li>
+					<li class="nav-item">
+						<a routerLink="/tips" class="nav-link">TIPS</a>
+					</li>
+					<li class="nav-item">
+						<a routerLink="/standings" class="nav-link">STANDINGS</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 </header>

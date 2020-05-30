@@ -1,9 +1,9 @@
-<section class="select-team">
+<section class="select-team container">
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto">
         <h5 class="display-4">Select your Team</h5>
     </div>
     <ul class="row list-group-horizontal justify-content-center">
-        <a routerLink="/nextgames" [state]="{data:team}" class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-7 mb-4 list-item" *ngFor = "let team of teams | async">
+        <a routerLink="/team" [state]="{data:team}" class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-7 mb-4 list-item" *ngFor = "let team of teams | async">
             <app-team-card [inputTeam]="team"></app-team-card>
         </a>
     </ul>

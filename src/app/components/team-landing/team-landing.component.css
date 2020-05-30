@@ -1,0 +1,21 @@
+
+  .hero-text h1{
+      display: inline-block;
+  }
+  .banner-logo{
+      max-width: 120px;
+      max-height: 120px;
+      margin: 20% 0%;
+    }
+    .team-logo-banner {
+      display: inline-block;
+      height: 200px;
+      width: 200px;
+      background: #fff;
+      border-radius: 100px;
+      vertical-align: middle;
+  }
+  
+  .hero-text h1 {
+      padding-right: 3%;
+  }

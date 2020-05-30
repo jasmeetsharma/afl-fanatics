@@ -1,0 +1,17 @@
+<section class="homepage ">
+    <div class="hero-image">
+        <div class="hero-text">
+            <h1 style="font-size:45px">Select Your Favourite</h1>
+            <p>Get the tips, fixtures tailored favourite team</p>
+        </div>
+    </div>
+    <!-- page content -->
+    <div class="container" style="margin-top:50px">
+        <div class="page-content">
+            <h2 class="display-3">Latest Results</h2>
+            <app-game-panel [inputPanelType]="2" [numOfGames]="1" [games]="previousGames"></app-game-panel>
+            <h2 class="display-3">Next Match</h2>
+            <app-game-panel [inputPanelType]="1" [numOfGames]="1" [games]="nextGames"></app-game-panel>
+        </div>
+    </div>
+</section>

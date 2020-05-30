@@ -1,3 +1,4 @@
+import { Team } from './team';
 export interface Game{
     id: number,
     ateamid: number,
@@ -21,4 +22,6 @@ export interface Game{
     date: string,
     ascore: number,
     year: number,
+    awayTeam:Team,
+    homeTeam:Team
 }
