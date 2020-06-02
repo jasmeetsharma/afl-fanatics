@@ -15,6 +15,8 @@ export class DataService {
   private tipsSourcesUrl  = 'https://api.squiggle.com.au/?q=sources';
   private cacheTeams$:Observable<Team[]>;
   private cacheGames$:Observable<Game[]>;
+  private cacheTipSources$ : Observable<any[]>;
+  private cacheTips$ : Observable<any[]>;
 
   constructor(private http:HttpClient) {
    }
@@ -30,7 +32,7 @@ export class DataService {
 
   getTeamsNoCache() : Observable<Team[]> {
     return this.http.get<Team[]>(this.teamsUrl)
-    .pipe(map(res => res['teams'],shareReplay(1))
+    .pipe(map(res => res['teams'])
     );
   }
 
@@ -90,19 +92,35 @@ getGameDetails(favTeamId ? :number,rivalTeamId ? :number) : Observable<Game[]>{
 /**
    * Fetch all the Sources for the tips.
    */
-  getTipSources():Observable<any[]>{
+  getTipSourcesNoCache():Observable<any[]>{
     return this.http.get<any[]>(this.tipsSourcesUrl)
     .pipe(map(res=>res['sources'])
     );
   }
+  getTipSources() : Observable<Team[]> {
+    if (!this.cacheTipSources$) {
+      this.cacheTipSources$ = this.getTipSourcesNoCache().pipe(
+        shareReplay(1)
+      );
+    }
+    return this.cacheTipSources$;
+   }
 
 /**
    * Return all the tips for round 20.
    */
 
-  getTip() : Observable<Tip[]> {
+  getTipsNoCache() : Observable<Tip[]> {
     return this.http.get<Tip[]>(this.tipsUrl)
     .pipe(map(res => res['tips']));
   }
+  getTip() : Observable<Team[]> {
+    if (!this.cacheTips$) {
+      this.cacheTips$ = this.getTipsNoCache().pipe(
+        shareReplay(1)
+      );
+    }
+    return this.cacheTips$;
+   }
 
 }
