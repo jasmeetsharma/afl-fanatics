@@ -58,7 +58,12 @@ export class NavigationService {
       }
       this.venue = updatedVenues;
       console.log(this.venue);
-      this.venueLocations();
+      let v =localStorage.getItem('venues');
+      if(v != undefined && v!= ""){
+        this.venue = JSON.parse(v);
+      }else{
+        this.venueLocations();
+      }
     })
   }
 
@@ -73,6 +78,7 @@ export class NavigationService {
         this.venue[x].lat = res.lat;
         this.venue[x].lng = res.lng;
         this.venue[x].distance = this.getDistanceFromCurrentPos(this.currentLoc, this.venue[x]);
+        localStorage.setItem('venues',JSON.stringify(this.venue));
       })
     });
   }
@@ -98,7 +104,7 @@ export class NavigationService {
         l.lng = res[0]['lon'];
         l.name = res[0]['display_name'];
         return l;
-      }));
+      }),shareReplay(1));
   }
 
   /**

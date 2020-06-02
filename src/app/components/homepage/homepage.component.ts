@@ -27,16 +27,6 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     this.getGamesInfo();
     this.navigationService.getNearestGame();
-    let currentLoc = new Location();
-    window.navigator.geolocation.getCurrentPosition((pos) => {
-      currentLoc.lat = pos.coords.latitude;
-      currentLoc.lng = pos.coords.longitude;
-      this.navigationService.getAddress(currentLoc).subscribe(res=>{
-        this.currentLocation = res.name;
-      });
-    })
-    
-
   }
 
   getGamesInfo():void{
