@@ -1,8 +1,8 @@
 <section class="homepage ">
     <div class="hero-image">
         <div class="hero-text">
-            <h1 style="font-size:45px">Select Your Favourite</h1>
-            <p>Get the tips, fixtures tailored favourite team</p>
+            <h1>Select Your Favourite Team</h1>
+            <p>Get the tips, fixtures tailored for your <a routerLink="/teams" title="Select team page">favourite team</a></p>
         </div>
     </div>
     <!-- page content -->
@@ -10,8 +10,12 @@
         <div class="page-content">
             <h2 class="display-3">Latest Results</h2>
             <app-game-panel [inputPanelType]="2" [numOfGames]="1" [games]="previousGames"></app-game-panel>
-            <h2 class="display-3">Next Match</h2>
+            <h2 class="display-3">Next Match</h2><button class="btn btn-link" (click)="getNearGame()">Next Nearest Game</button>
             <app-game-panel [inputPanelType]="1" [numOfGames]="1" [games]="nextGames"></app-game-panel>
+            <div *ngIf="isNearest">
+                <h2 class="display-3">Next Nearest Game</h2>
+                <app-game-panel  [inputPanelType]="1" [numOfGames]="1" [games]="nearestGame"></app-game-panel>
+            </div>
         </div>
     </div>
 </section>

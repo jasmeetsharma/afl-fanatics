@@ -31,7 +31,46 @@
     margin: 0 2%;
     max-width: 120px;
   }
-  .display-4{
-    font-size: 1.5rem;
+  .display-4 {
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+  .match-details p {
+    margin: 0 auto;
+  }
+  .match-details .match-time {
+    font-size: 1.2rem;
+  }
+  .match-date {
+      color: grey;
+  }
+  .match-venue{
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+  .match-winner span {
+      font-weight: 900;
+  }
+  .panel {
+    transition: box-shadow .3s;
+  }
+  .panel:hover {
+    box-shadow: 0 0 15px rgba(33,33,33,.2); 
+  }
+  @media only screen and (max-width: 768px){
+    .panel .panel-body .match-details {
+      width: 100px;
+      margin: 0 6px;
+      min-width: auto;
+    }
+    .panel-body .team-logo{
+      width: 50px;
+    }
+    .panel .panel-body div.tip-percent{
+      margin: 0;
+    }
+    .tip-percent p{
+      font-size: 0.9rem;
+    }
   }
   /* panel css end */
