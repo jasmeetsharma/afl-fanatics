@@ -97,7 +97,7 @@ getGameDetails(favTeamId ? :number,rivalTeamId ? :number) : Observable<Game[]>{
     .pipe(map(res=>res['sources'])
     );
   }
-  getTipSources() : Observable<Team[]> {
+  getTipSources() : Observable<any[]> {
     if (!this.cacheTipSources$) {
       this.cacheTipSources$ = this.getTipSourcesNoCache().pipe(
         shareReplay(1)
@@ -114,7 +114,7 @@ getGameDetails(favTeamId ? :number,rivalTeamId ? :number) : Observable<Game[]>{
     return this.http.get<Tip[]>(this.tipsUrl)
     .pipe(map(res => res['tips']));
   }
-  getTip() : Observable<Team[]> {
+  getTip() : Observable<Tip[]> {
     if (!this.cacheTips$) {
       this.cacheTips$ = this.getTipsNoCache().pipe(
         shareReplay(1)
