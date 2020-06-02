@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of, observable } from 'rxjs';
+import { Standing } from 'src/app/models/standing';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-standings-page',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StandingsPageComponent implements OnInit {
 
-  constructor() { }
+  standings: Observable<Standing[]>
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.getStandings();
+ 
   }
+
+  getStandings(): void{
+    this.standings=this.dataService.getStandings();
+   }
 
 }

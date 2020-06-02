@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable,of } from 'rxjs';
 import { catchError, map, tap, shareReplay,filter } from 'rxjs/operators';
 import { Game } from '../models/game';
+import { Standing } from '../models/standing';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +14,7 @@ export class DataService {
   private gamesUrl = 'https://api.squiggle.com.au/?q=games;year=2019';
   private tipsUrl  = 'https://api.squiggle.com.au/?q=tips;year=2019;round=20';
   private tipsSourcesUrl  = 'https://api.squiggle.com.au/?q=sources';
+  private standingsUrl = 'https://api.squiggle.com.au/?q=standings;year=2019;round=20';
   private cacheTeams$:Observable<Team[]>;
   private cacheGames$:Observable<Game[]>;
 
@@ -92,8 +94,7 @@ getGameDetails(favTeamId ? :number,rivalTeamId ? :number) : Observable<Game[]>{
    */
   getTipSources():Observable<any[]>{
     return this.http.get<any[]>(this.tipsSourcesUrl)
-    .pipe(map(res=>res['sources'])
-    );
+    .pipe(map(res=>res['sources']));
   }
 
 /**
@@ -103,6 +104,16 @@ getGameDetails(favTeamId ? :number,rivalTeamId ? :number) : Observable<Game[]>{
   getTip() : Observable<Tip[]> {
     return this.http.get<Tip[]>(this.tipsUrl)
     .pipe(map(res => res['tips']));
+  }
+
+
+/**
+  * Return all the standings.
+  */
+
+  getStandings() : Observable<Standing[]> {
+    return this.http.get<Standing[]>(this.standingsUrl)
+    .pipe(map(res => res['standings']));
   }
 
 }
