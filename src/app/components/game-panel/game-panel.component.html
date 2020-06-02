@@ -1,21 +1,29 @@
 <div class="panel panel-default" *ngFor="let g of games | async | slice:0:numOfGames">
+    <div class="d-block d-sm-block d-md-none d-lg-none d-xl-none text-center mb-2"><b>{{g.homeTeam.name}}</b> v <b>{{g.awayTeam.name}}</b></div>
     <div class="panel-body row justify-content-center align-items-center">
         <img src="{{'https://squiggle.com.au/'+g.homeTeam.logo}}" class="img-rounded team-logo" alt="{{g.homeTeam.name}}">
         <div>
-            <h4 class="display-4" >{{g.homeTeam.name}}</h4>
+            <h4 class="display-4 d-none d-md-block d-lg-block d-xl-block" >{{g.homeTeam.name}}</h4>
             <p *ngIf="result === inputPanelType" >{{g.hscore}}</p>
         </div>
         <div class="match-details">
-            <p>{{g.date}}</p>
-            <p>{{g.venue}}</p>
-            <p *ngIf="result === inputPanelType">Winner is {{g.winner}}</p>
+            <p class="match-time" *ngIf="next== inputPanelType">{{g.date | date:'shortTime'}}</p>
+            <p class="match-date">{{g.date | date:'mediumDate'}}</p>
+            <p class="match-venue d-none d-md-block d-lg-block d-xl-block">{{g.venue}}</p>
+            <a routerLink="/tips" [state]="{data : team}" *ngIf="next== inputPanelType && team !=undefined"><p>Get tips</p></a>
+            <p *ngIf="result === inputPanelType" class="match-winner"><span>{{g.winner}}</span> won</p>
         </div>
         <div>
-            <h4 class="display-4" >{{g.awayTeam.name}}</h4>
+            <h4 class="display-4 d-none d-md-block d-lg-block d-xl-block" >{{g.awayTeam.name}}</h4>
             <p *ngIf="result === inputPanelType">{{g.ascore}}</p>
         </div>
         <img src="{{'https://squiggle.com.au/'+g.awayTeam.logo}}" class="img-rounded team-logo" alt="{{g.awayTeam.name}}">
     </div>
+</div>
+<div class="text-center">
+    <button class="btn btn-outline-dark mb-3" *ngIf ="numOfGames < (games | async)?.length && numOfGames!=1" (click)="showMoreItems()">
+        Show More
+       </button>
 </div>
 <div *ngIf="games | async as g">
     <div class="panel panel-default" *ngIf="g.length == 0">
@@ -25,19 +33,20 @@
     </div>
 </div>
 <div class="panel panel-default" *ngFor="let g of tips | async | slice:0:numOfGames">
+    <div class="d-block d-sm-block d-md-none d-lg-none d-xl-none text-center mb-2"><b>{{g.homeTeam.name}}</b> v <b>{{g.awayTeam.name}}</b></div>
     <div class="panel-body row justify-content-center align-items-center">
         <img src="{{'https://squiggle.com.au/'+g.homeTeam.logo}}" class="img-rounded team-logo" alt="{{g.homeTeam.name}}">
-        <div>
-            <h4 class="display-4" >{{g.homeTeam.name}}</h4>
-            <p *ngIf="tip === inputPanelType" >{{g.hconfidence}} %</p>
+        <div class="tip-percent">
+            <h4 class="display-4 d-none d-md-block d-lg-block d-xl-block" >{{g.homeTeam.name}}</h4>
+            <p *ngIf="tip === inputPanelType">{{g.hconfidence}} %</p>
         </div>
         <div class="match-details">
-            <p>{{g.date}}</p>
-            <p>{{g.venue}}</p>
-            <p>Source : {{g.source}}</p>
+            <p class="match-time">{{g.date | date:'shortTime'}}</p>
+            <p class="match-date">{{g.date | date:'mediumDate'}}</p>
+            <p class="match-venue d-none d-md-block d-lg-block d-xl-block">{{g.venue}}</p>
         </div>
-        <div>
-            <h4 class="display-4" >{{g.awayTeam.name}}</h4>
+        <div class="tip-percent">
+            <h4 class="display-4 d-none d-md-block d-lg-block d-xl-block" >{{g.awayTeam.name}}</h4>
             <p *ngIf="tip === inputPanelType">{{(100.0 - g.hconfidence) | number:'2.1-2'}} %</p>
         </div>
         <img src="{{'https://squiggle.com.au/'+g.awayTeam.logo}}" class="img-rounded team-logo" alt="{{g.awayTeam.name}}">

@@ -1,23 +1,25 @@
 <div class="hero-image">
     <div class="hero-text">
-      <h1 style="font-size:64px">Tips/Predictions</h1>
+        <h1>Tips/Predictions</h1>
     </div>
-    <div>
-      <select (change)="updateSelectedTeam($event.target.value,tipSourceId)">
-          <option value="0">Select Fav Team</option>
-          <option *ngFor="let team of teams" value={{team.id}}>
-              {{team.name}}
-          </option>
-      </select>
-  </div>
-  <div>
-      <select (change)="updateSelectedTeam(favTeamId,$event.target.value)">
-          <option value="0">Select Tips Source</option>
-          <option *ngFor="let s of tipSources | async" value={{s.id}}>
-              {{s.name}}
-          </option>
-      </select>
-  </div>
+    <div class="text-center">
+        <div class="banner-dd">
+          <select (change)="updateSelectedTeam($event.target.value,tipSourceId)">
+              <option value="0">Select Fav Team</option>
+              <option *ngFor="let team of teams" value={{team.id}}>
+                  {{team.name}}
+              </option>
+          </select>
+      </div>
+      <div class="banner-dd">
+          <select (change)="updateSelectedTeam(favTeamId,$event.target.value)">
+              <option value="0">Select Tips Source</option>
+              <option *ngFor="let s of tipSources | async" value={{s.id}}>
+                  {{s.name}}
+              </option>
+          </select>
+      </div>
+    </div>
 </div>
 <div class="container" style="margin:50px auto">
     <h2 class="display-3">Tips</h2>

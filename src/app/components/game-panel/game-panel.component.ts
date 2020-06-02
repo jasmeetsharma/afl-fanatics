@@ -16,12 +16,17 @@ export class GamePanelComponent implements OnInit {
   @Input() games : Observable<Game[]>;
   @Input() tips : Observable<Tip[]>;
   @Input() teams : Team[];
+  @Input() team : Team;
   result : PanelType = PanelType.result;
   next : PanelType = PanelType.next;
   tip : PanelType = PanelType.tip;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  showMoreItems(){
+    this.numOfGames = Number(this.numOfGames)+5;
   }
 
 }

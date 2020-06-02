@@ -1,3 +1,6 @@
+.select-team a {
+  color: #232222;
+}
 .hero-image {
     background-color: black;
     height: 50%;
@@ -18,6 +21,98 @@
     width: 80%;
     display: inline-block;
   }
-  .display-3{
-    font-size: 2.5rem;
+  .homepage .hero-text h1{
+    font-size: 4vw;
   }
+  .hero-text h1{
+    font-size: 5vw;
+  }
+  .display-3{
+    font-size: 1.5rem;
+    display: inline;
+  }
+
+.hero-text p a {
+    color: #fff;
+    text-decoration: underline;
+}
+.hero-text p, .hero-text p a {
+    font-size: 1.5vw;
+}
+.banner-dd{
+  display: inline;
+  margin: 0 10px;
+  position: relative;
+  top: 12px;
+}
+.banner-dd select {
+  border-radius: 6px;
+  height: 2rem;
+  font-size: 1rem;
+  color: #353434;
+  text-align: center;
+  text-align-last: center;
+}
+.team-landing .container a{
+  color: #232222;
+}
+/* Mobile Styles */
+@media only screen and (max-width: 768px){
+  .hero-image { 
+      padding-top: 50% !important; 
+  }
+  .hero-image .banner-dd {
+    top: 55px;
+  }
+
+  .hero-image .banner-dd select {
+      margin-bottom: 1%;
+      width: 200px;
+  }
+  .homepage .hero-text h1{
+    font-size: 6vw;
+  }
+  .hero-text h1{
+    font-size: 10vw;
+  }
+  .hero-text p, .hero-text p a{
+    font-size: 3vw;
+  }
+  .team-landing .hero-text {
+    top: 80%;
+  }
+
+  .team-landing .panel {
+      margin-top: 20px;
+  }
+  .team-landing .hero-text h1{
+    font-size: 7vw;
+    padding-right: 0 !important;
+  }
+  .select-team .display-4 {
+    text-align: center;
+  }
+}
+
+/* Homepage CSS */
+.homepage .hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/assets/football2.jpg");
+  height: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  /* background-image: url('football2.jpg'); */
+  padding-top: 29%;
+}
+
+.homepage .hero-text {
+  text-align: center;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  width: 80%;
+}
+

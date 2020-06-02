@@ -1,3 +1,5 @@
+import { Location } from './../../models/location';
+import { NavigationService } from './../../services/navigation.service';
 import { PanelType } from './../../models/PanelType';
 import { Team } from './../../models/team';
 import { map, switchMap, filter } from 'rxjs/operators';
@@ -17,10 +19,24 @@ export class HomepageComponent implements OnInit {
   nextGames:Observable<Game[]>;
   teams:Team[];
   panelType:PanelType ;
-  constructor(private dataService:DataService) { }
+  nearestGame : Observable<Game[]>;
+  isNearest : boolean = false;
+  currentLocation : String;
+  constructor(private dataService:DataService,private navigationService:NavigationService) { }
 
   ngOnInit(): void {
     this.getGamesInfo();
+    this.navigationService.getNearestGame();
+    let currentLoc = new Location();
+    window.navigator.geolocation.getCurrentPosition((pos) => {
+      currentLoc.lat = pos.coords.latitude;
+      currentLoc.lng = pos.coords.longitude;
+      this.navigationService.getAddress(currentLoc).subscribe(res=>{
+        this.currentLocation = res.name;
+      });
+    })
+    
+
   }
 
   getGamesInfo():void{
@@ -44,5 +60,10 @@ export class HomepageComponent implements OnInit {
   getTeam(tid: number) {
     let tt = this.teams.filter(t => t.id == tid);
     return tt[0];
+  }
+
+  getNearGame(){
+    this.nearestGame=of(this.navigationService.getNearestLocation());
+    this.isNearest = true;
   }
 }
