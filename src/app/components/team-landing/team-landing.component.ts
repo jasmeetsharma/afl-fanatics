@@ -19,8 +19,10 @@ export class TeamLandingComponent implements OnInit {
 
   ngOnInit(): void {
     this.team = window.history.state.data;
-    this.nextGames=this.dataService.getGameDetails(this.team.id);
-    //this.nextGames= JSON.parse(localStorage.getItem('allGames'));
+    this.dataService.getGameDetails(this.team.id).subscribe(res=>{
+      this.nextGames=this.dataService.getNextGames(res);
+      this.previousGames=this.dataService.getPreviousGames(res);
+    });
   }
 
 }
