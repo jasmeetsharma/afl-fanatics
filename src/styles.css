@@ -115,4 +115,11 @@
   color: white;
   width: 80%;
 }
-
+.panel.panel-default {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  border-color: #ddd;
+  padding: 20px 0px;
+}

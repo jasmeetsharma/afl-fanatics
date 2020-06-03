@@ -6,7 +6,7 @@ import { map, switchMap, filter } from 'rxjs/operators';
 import { Game } from './../../models/game';
 import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
-import { Observable,of } from 'rxjs';
+import { Observable,of, forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-homepage',
@@ -21,13 +21,15 @@ export class HomepageComponent implements OnInit {
   panelType:PanelType ;
   nearestGame : Observable<Game[]>;
   isNearest : boolean = false;
+  showSpinner : boolean = false;
   currentLocation : String;
+  venues: Observable<Location[]>;
   constructor(private dataService:DataService,private navigationService:NavigationService) { }
 
   ngOnInit(): void {
     this.getGamesInfo();
     this.navigationService.getNearestGame();
-  }
+    }
 
   getGamesInfo():void{
     this.dataService.getGames().pipe(
@@ -53,7 +55,16 @@ export class HomepageComponent implements OnInit {
   }
 
   getNearGame(){
-    this.nearestGame=of(this.navigationService.getNearestLocation());
-    this.isNearest = true;
+    this.showSpinner = true;
+    setTimeout(() => {
+      this.navigationService.getVenues().subscribe(res=>{
+        res.sort((c,b)=>c.distance - b.distance)
+        this.nextGames.subscribe(r=>{
+          this.nearestGame=of(r.filter(i=>i.venue==res[0].name).sort((a,b)=>Date.parse(a.date) - Date.parse(b.date)));
+          this.isNearest = true;
+        });
+      });
+      this.showSpinner = false;
+    }, 3000);
   }
 }

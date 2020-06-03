@@ -6,16 +6,27 @@
         </div>
     </div>
     <!-- page content -->
+    <div class="loader m-auto"></div>
     <div class="container" style="margin-top:50px">
         <div class="page-content">
             <h2 class="display-3">Latest Results</h2>
             <app-game-panel [inputPanelType]="2" [numOfGames]="1" [games]="previousGames"></app-game-panel>
-            <h2 class="display-3">Next Match</h2><button class="btn btn-link" (click)="getNearGame()">Next Nearest Game</button>
+            <h2 class="display-3">Next Match</h2>
             <app-game-panel [inputPanelType]="1" [numOfGames]="1" [games]="nextGames"></app-game-panel>
+            <h2 class="display-3">Next Nearest Game</h2>
+            <div *ngIf="!isNearest">
+                <div class="panel panel-default text-center">
+                    <button class="btn btn-lg btn-link" (click)="getNearGame()">Next Nearest Game</button>
+                </div>
+            </div>
             <div *ngIf="isNearest">
-                <h2 class="display-3">Next Nearest Game</h2>
                 <app-game-panel  [inputPanelType]="1" [numOfGames]="1" [games]="nearestGame"></app-game-panel>
             </div>
         </div>
     </div>
 </section>
+<div id="overlay" *ngIf="showSpinner">
+    <div class="spinner"></div>
+    <br/>
+    Loading...
+</div>

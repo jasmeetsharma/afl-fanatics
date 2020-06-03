@@ -57,7 +57,6 @@ export class NavigationService {
         a = false;
       }
       this.venue = updatedVenues;
-      console.log(this.venue);
       let v =localStorage.getItem('venues');
       if(v != undefined && v!= ""){
         this.venue = JSON.parse(v);
@@ -81,6 +80,9 @@ export class NavigationService {
         localStorage.setItem('venues',JSON.stringify(this.venue));
       })
     });
+  }
+  getVenues(): Observable<Location[]>{
+    return of(this.venue);
   }
   /**
    * 
@@ -167,8 +169,6 @@ export class NavigationService {
     let a ;
     let w = [];
     this.venue.forEach(val=>w.push(Object.assign({},val)));
-    console.log(w.sort((c,b)=>c.distance - b.distance));
-    console.log(this.upcomingGames.filter(i=>i.venue==w[0].name));
     a=this.upcomingGames.filter(i=>i.venue==w[0].name).sort((a,b)=>Date.parse(a.date) - Date.parse(b.date));
     return a;
   }
