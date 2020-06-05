@@ -9,7 +9,6 @@ import { TeamCardComponent } from './components/team-card/team-card.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MainContainerComponent } from './components/main-container/main-container.component';
-import { NextGamesComponent } from './components/next-games/next-games.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { GamePanelComponent } from './components/game-panel/game-panel.component';
 import { TeamLandingComponent } from './components/team-landing/team-landing.component';
@@ -25,7 +24,6 @@ import { StandingsPageComponent } from './components/standings-page/standings-pa
     HeaderComponent,
     FooterComponent,
     MainContainerComponent,
-    NextGamesComponent,
     HomepageComponent,
     GamePanelComponent,
     TeamLandingComponent,

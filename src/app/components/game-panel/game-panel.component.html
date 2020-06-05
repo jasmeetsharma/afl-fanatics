@@ -9,7 +9,7 @@
         <div class="match-details">
             <p class="match-time" *ngIf="next== inputPanelType">{{g.date | date:'shortTime'}}</p>
             <p class="match-date">{{g.date | date:'mediumDate'}}</p>
-            <p class="match-venue d-none d-md-block d-lg-block d-xl-block">{{g.venue}}</p>
+            <p class="match-venue" *ngIf="next== inputPanelType">{{g.venue}}</p>
             <a routerLink="/tips" [state]="{data : team}" *ngIf="next== inputPanelType && team !=undefined"><p>Get tips</p></a>
             <p *ngIf="result === inputPanelType" class="match-winner"><span>{{g.winner}}</span> won</p>
         </div>
