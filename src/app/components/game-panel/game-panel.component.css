@@ -65,5 +65,9 @@
     .tip-percent p{
       font-size: 0.9rem;
     }
+    .match-venue{
+      font-size: 0.9rem;
+      font-weight: normal;
+    }
   }
   /* panel css end */

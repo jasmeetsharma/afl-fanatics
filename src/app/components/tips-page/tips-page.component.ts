@@ -35,6 +35,7 @@ export class TipsPageComponent implements OnInit {
       this.tips.map(r=>{
         r.awayTeam=this.getTeam(r.ateamid);
         r.homeTeam=this.getTeam(r.hteamid);
+        r.date=r.date.replace(/-/g, "/");
       });
       if(window.history.state.data){
         this.favTeam = window.history.state.data;
