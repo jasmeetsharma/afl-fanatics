@@ -42,6 +42,7 @@ export class HomepageComponent implements OnInit {
       this.allGames.map(r=>{
           r.awayTeam=this.getTeam(r.ateamid);
           r.homeTeam=this.getTeam(r.hteamid);
+          r.date=r.date.replace(/-/g, "/");
         });
         localStorage.setItem("allGames",JSON.stringify(this.allGames));
         this.previousGames= this.dataService.getPreviousGames(this.allGames);
